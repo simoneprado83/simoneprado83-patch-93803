@@ -1,0 +1,60 @@
+.heroSection {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-blue-primary),
+    var(--color-blue-secondary)
+  );
+  color: var(--color-white);
+  padding-top: 5rem; /* py-20 */
+  padding-bottom: 5rem; /* py-20 */
+}
+
+.container {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.75rem; /* md:text-6xl */
+  }
+}
+
+.titleHighlight {
+  color: var(--color-blue-light);
+}
+
+.subtitle {
+  font-size: 1.25rem; /* text-xl */
+  margin-bottom: 2rem; /* mb-8 */
+  color: var(--color-blue-light);
+  max-width: 48rem; /* max-w-3xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+}
+
+.button {
+  background-color: var(--color-white);
+  color: var(--color-blue-primary);
+  padding: 1rem 2rem; /* px-8 py-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  font-weight: 600;
+  font-size: 1.125rem; /* text-lg */
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.button:hover {
+  background-color: var(--color-blue-light);
+}

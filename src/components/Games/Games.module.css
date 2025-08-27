@@ -1,0 +1,116 @@
+.gamesSection {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: var(--color-white);
+}
+
+.headerText {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #4b5563;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .gameGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .gameGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.gameCard {
+  background-color: var(--color-white);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardHeader {
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji {
+  font-size: 3.75rem;
+}
+
+/* Gradientes dos cards de jogo */
+.sequenciaGradient { background: linear-gradient(to bottom right, #60a5fa, #3b82f6); }
+.labirintoGradient { background: linear-gradient(to bottom right, #4ade80, #22c55e); }
+.puzzleGradient { background: linear-gradient(to bottom right, #c084fc, #a855f7); }
+.debugGradient { background: linear-gradient(to bottom right, #f87171, #ef4444); }
+.loopsGradient { background: linear-gradient(to bottom right, #fbbf24, #f97316); }
+.condicoesGradient { background: linear-gradient(to bottom right, #818cf8, #6366f1); }
+
+.cardContent {
+  padding: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.level {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.blueLevel { color: var(--color-blue-primary); }
+.greenLevel { color: #22c55e; }
+.purpleLevel { color: #a855f7; }
+.redLevel { color: #ef4444; }
+.orangeLevel { color: #f97316; }
+.indigoLevel { color: #6366f1; }
+
+.rating {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
