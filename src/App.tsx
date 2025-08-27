@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Header from './components/Header/';
 import Hero from './components/Hero/';
 import Games from './components/Games/';
 import Features from './components/Features/';
 import Footer from './components/Footer/';
+import SequenciaPage from './components/Games/sequencia';
+
 import './index.css'; // Importa os estilos globais
 
 function App() {
@@ -24,18 +28,32 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col">
-      <Header
-        isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
-      />
-      <main className="flex-1">
-        <Hero scrollToGames={scrollToGames} />
-        <Games playGame={playGame} />
-        <Features />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="flex flex-col">
+        <Header
+          isMobileMenuOpen={isMobileMenuOpen}
+          toggleMobileMenu={toggleMobileMenu}
+        />
+        <main className="flex-1">
+          <Routes>
+            {/* Página inicial */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero scrollToGames={scrollToGames} />
+                  <Games playGame={playGame} />
+                  <Features />
+                </>
+              }
+            />
+            {/* Página do jogo Sequência */}
+            <Route path="/sequencia" element={<SequenciaPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

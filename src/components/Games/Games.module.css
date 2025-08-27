@@ -1,7 +1,7 @@
 .gamesSection {
   padding-top: 4rem;
   padding-bottom: 4rem;
-  background-color: var(--color-white);
+  background: linear-gradient(180deg, #f9fafb, #ffffff);
 }
 
 .headerText {
@@ -11,9 +11,10 @@
 
 .title {
   font-size: 1.875rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-gray-800);
   margin-bottom: 1rem;
+  letter-spacing: -0.5px;
 }
 
 @media (min-width: 768px) {
@@ -28,6 +29,8 @@
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
+  opacity: 0.85;
 }
 
 .gameGrid {
@@ -48,13 +51,23 @@
   }
 }
 
+/* === Cards === */
 .gameCard {
-  background-color: var(--color-white);
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(229, 231, 235, 0.8);
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.gameCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .cardHeader {
@@ -62,19 +75,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardHeader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.3), transparent 70%);
+  opacity: 0.6;
 }
 
 .emoji {
-  font-size: 3.75rem;
+  font-size: 3.5rem;
+  z-index: 1;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
 }
 
-/* Gradientes dos cards de jogo */
-.sequenciaGradient { background: linear-gradient(to bottom right, #60a5fa, #3b82f6); }
-.labirintoGradient { background: linear-gradient(to bottom right, #4ade80, #22c55e); }
-.puzzleGradient { background: linear-gradient(to bottom right, #c084fc, #a855f7); }
-.debugGradient { background: linear-gradient(to bottom right, #f87171, #ef4444); }
-.loopsGradient { background: linear-gradient(to bottom right, #fbbf24, #f97316); }
-.condicoesGradient { background: linear-gradient(to bottom right, #818cf8, #6366f1); }
+/* Gradientes dos cards com glow */
+.sequenciaGradient { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.labirintoGradient { background: linear-gradient(135deg, #4ade80, #22c55e); }
+.puzzleGradient   { background: linear-gradient(135deg, #c084fc, #a855f7); }
+.debugGradient    { background: linear-gradient(135deg, #f87171, #ef4444); }
+.loopsGradient    { background: linear-gradient(135deg, #fbbf24, #f97316); }
+.condicoesGradient{ background: linear-gradient(135deg, #818cf8, #6366f1); }
 
 .cardContent {
   padding: 1.5rem;
@@ -89,7 +115,8 @@
 
 .cardDescription {
   color: #4b5563;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
 }
 
 .cardFooter {
@@ -98,19 +125,24 @@
   justify-content: space-between;
 }
 
+/* Níveis com cores mais tech */
 .level {
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
-.blueLevel { color: var(--color-blue-primary); }
-.greenLevel { color: #22c55e; }
-.purpleLevel { color: #a855f7; }
-.redLevel { color: #ef4444; }
-.orangeLevel { color: #f97316; }
-.indigoLevel { color: #6366f1; }
+.blueLevel { color: #2563eb; }
+.greenLevel { color: #16a34a; }
+.purpleLevel { color: #9333ea; }
+.redLevel { color: #dc2626; }
+.orangeLevel { color: #ea580c; }
+.indigoLevel { color: #4f46e5; }
 
 .rating {
   font-size: 0.875rem;
   color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }

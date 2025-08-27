@@ -1,0 +1,93 @@
+.gameCard {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cardContent {
+  padding: 1rem;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.levelSelector {
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.select {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+}
+
+.subtitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  background-color: #fff;
+  color: #2563eb;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #dbeafe;
+}
+
+.feedback {
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.success {
+  color: #22c55e;
+  text-shadow: 0 0 5px #fff;
+}
+
+.fail {
+  color: #ef4444;
+}
+
+.progressBar {
+  height: 0.5rem;
+  background-color: #ccc;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.progress {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  transition: width 0.5s ease;
+}

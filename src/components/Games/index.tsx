@@ -10,8 +10,7 @@ const gameData = [
     type: 'sequencia',
     emoji: '🔢',
     title: 'Sequência Lógica',
-    description:
-      'Aprenda sobre sequências e padrões através de desafios progressivos.',
+    description: 'Aprenda sobre sequências e padrões através de desafios progressivos.',
     level: 'Iniciante',
     rating: '⭐ 4.8',
   },
@@ -19,8 +18,7 @@ const gameData = [
     type: 'labirinto',
     emoji: '🏃‍♂',
     title: 'Labirinto do Código',
-    description:
-      'Navegue por labirintos usando comandos de programação básicos.',
+    description: 'Navegue por labirintos usando comandos de programação básicos.',
     level: 'Intermediário',
     rating: '⭐ 4.9',
   },
@@ -32,37 +30,13 @@ const gameData = [
     level: 'Avançado',
     rating: '⭐ 4.7',
   },
-  {
-    type: 'debug',
-    emoji: '🐛',
-    title: 'Caça aos Bugs',
-    description: 'Encontre e corrija erros em códigos de programação.',
-    level: 'Intermediário',
-    rating: '⭐ 4.6',
-  },
-  {
-    type: 'loops',
-    emoji: '🔄',
-    title: 'Mundo dos Loops',
-    description: 'Domine estruturas de repetição de forma divertida.',
-    level: 'Iniciante',
-    rating: '⭐ 4.8',
-  },
-  {
-    type: 'condicoes',
-    emoji: '❓',
-    title: 'Decisões Lógicas',
-    description:
-      'Aprenda estruturas condicionais através de cenários interativos.',
-    level: 'Iniciante',
-    rating: '⭐ 4.9',
-  },
+  // outros jogos...
 ];
 
 const GameCard: React.FC<{
   game: (typeof gameData)[0];
-  playGame: (type: string) => void;
-}> = ({ game, playGame }) => {
+  onClick: () => void;
+}> = ({ game, onClick }) => {
   let gradientClass;
   let levelColor;
 
@@ -97,10 +71,7 @@ const GameCard: React.FC<{
   }
 
   return (
-    <div
-      className={`game-card ${styles.gameCard}`}
-      onClick={() => playGame(game.type)}
-    >
+    <div className={`game-card ${styles.gameCard}`}>
       <div className={`${styles.cardHeader} ${gradientClass}`}>
         <span className={styles.emoji}>{game.emoji}</span>
       </div>
@@ -111,26 +82,46 @@ const GameCard: React.FC<{
           <span className={`${styles.level} ${levelColor}`}>{game.level}</span>
           <span className={styles.rating}>{game.rating}</span>
         </div>
+        {/* Botão do card */}
+        {game.type === 'sequencia' ? (
+          <button
+            className="button mt-4 w-full"
+            onClick={() => (window.location.href = '/sequencia')}
+          >
+            Jogar
+          </button>
+        ) : (
+          <button className="button mt-4 w-full" onClick={onClick}>
+            Jogar
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
 const Games: React.FC<GamesProps> = ({ playGame }) => {
+  const handleCardClick = (gameType: string) => {
+    playGame(gameType); // outros jogos continuam chamando playGame
+  };
+
   return (
     <section id="games" className={styles.gamesSection}>
-      <div
-        className={`${styles.container} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}
-      >
+      <div className={`${styles.container} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
         <div className={styles.headerText}>
           <h3 className={styles.title}>Nossos Jogos</h3>
           <p className={styles.subtitle}>
             Escolha um jogo e comece sua jornada no mundo da programação
           </p>
         </div>
+
         <div className={styles.gameGrid}>
           {gameData.map((game, index) => (
-            <GameCard key={index} game={game} playGame={playGame} />
+            <GameCard
+              key={index}
+              game={game}
+              onClick={() => handleCardClick(game.type)}
+            />
           ))}
         </div>
       </div>
