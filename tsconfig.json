@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "esnext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -8,8 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "bundler",  // Use "bundler" se tiver TS >= 5.0 e editor compatível
+    "module": "node16",
+    "moduleResolution": "nodenext",  // Use "bundler" se tiver TS >= 5.0 e editor compatível
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
