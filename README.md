@@ -58,3 +58,4 @@ Para iniciar o servidor de desenvolvimento e visualizar a aplicação no seu nav
 ```bash
 npm run dev
 ```
+By Simone Prado
