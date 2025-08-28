@@ -9,6 +9,8 @@ import Footer from './components/Footer/';
 import SequenciaPage from './components/Games/sequencia';
 
 import './index.css'; // Importa os estilos globais
+import LabirintoPage from './components/Labirinto/Labirinto';
+import PuzzlePage from './components/Puzzle/Puzzle';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -47,8 +49,10 @@ function App() {
                 </>
               }
             />
-            {/* Página do jogo Sequência */}
+            {/* Rotas dos jogos */}
             <Route path="/sequencia" element={<SequenciaPage />} />
+            <Route path="/labirinto" element={<LabirintoPage />} />
+            <Route path="/puzzle" element={<PuzzlePage/>} />
           </Routes>
         </main>
         <Footer />

@@ -82,19 +82,39 @@ const GameCard: React.FC<{
           <span className={`${styles.level} ${levelColor}`}>{game.level}</span>
           <span className={styles.rating}>{game.rating}</span>
         </div>
+
         {/* Botão do card */}
-        {game.type === 'sequencia' ? (
+        {game.type === 'sequencia' && (
           <button
             className="button mt-4 w-full"
             onClick={() => (window.location.href = '/sequencia')}
           >
             Jogar
           </button>
-        ) : (
-          <button className="button mt-4 w-full" onClick={onClick}>
+        )}
+        {game.type === 'labirinto' && (
+          <button
+            className="button mt-4 w-full"
+            onClick={() => (window.location.href = '/labirinto')}
+          >
             Jogar
           </button>
         )}
+        {game.type === 'puzzle' && (
+          <button
+            className="button mt-4 w-full"
+            onClick={() => (window.location.href = '/puzzle')}
+          >
+            Jogar
+          </button>
+        )}
+        {game.type !== 'sequencia' &&
+          game.type !== 'labirinto' &&
+          game.type !== 'puzzle' && (
+            <button className="button mt-4 w-full" onClick={onClick}>
+              Jogar
+            </button>
+          )}
       </div>
     </div>
   );
