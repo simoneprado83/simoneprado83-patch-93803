@@ -1,159 +1,231 @@
-import React, { useState, useEffect, useRef } from "react";
-import Confetti from "react-confetti";
+import { useState } from "react";
 import styles from "./SequenciaLogica.module.css";
 
-type Level = "Iniciante" | "Intermediário" | "Avançado";
+// Definindo tipos para as formas e padrões
+type ShapeType = "square" | "circle" | "triangle";
 
-interface Sequence {
-  seq: number[];
-  answer: number;
+interface PatternItem {
+  color: string;
+  shape?: ShapeType;
 }
 
-// Gera sequência aleatória baseada no nível
-function generateSequence(level: Level): Sequence {
-  let length, step;
-  switch (level) {
-    case "Iniciante":
-      length = 4;
-      step = 1 + Math.floor(Math.random() * 3);
-      break;
-    case "Intermediário":
-      length = 5;
-      step = 2 + Math.floor(Math.random() * 4);
-      break;
-    case "Avançado":
-      length = 6;
-      step = 1 + Math.floor(Math.random() * 6);
-      break;
+interface Pattern {
+  level: number;
+  sequence: (string | PatternItem)[];
+  missing: number;
+  options: (string | PatternItem)[];
+  correct: string | PatternItem;
+  explanation: string;
+}
+
+// Dados dos padrões do jogo
+const patterns: Pattern[] = [
+  {
+    level: 1,
+    sequence: ["blue1", "blue2", "blue1", "blue2", "blue1"],
+    missing: 4,
+    options: ["blue1", "blue2", "blue3"],
+    correct: "blue2",
+    explanation: "Este é um padrão alternado: azul escuro, azul claro..."
+  },
+  {
+    level: 1,
+    sequence: ["blue1", "blue1", "blue2", "blue2", "blue1"],
+    missing: 4,
+    options: ["blue1", "blue2", "blue3"],
+    correct: "blue1",
+    explanation: "Padrão de repetição: cada cor aparece duas vezes seguidas."
+  },
+  {
+    level: 2,
+    sequence: [
+      { color: "blue2", shape: "square" },
+      { color: "blue2", shape: "circle" },
+      { color: "blue2", shape: "square" },
+      { color: "blue2", shape: "circle" },
+      { color: "blue2", shape: "square" }
+    ],
+    missing: 4,
+    options: [
+      { color: "blue2", shape: "circle" },
+      { color: "blue2", shape: "square" },
+      { color: "blue1", shape: "circle" }
+    ],
+    correct: { color: "blue2", shape: "circle" },
+    explanation: "As formas alternam: quadrado, círculo, quadrado..."
+  },
+  {
+    level: 3,
+    sequence: ["blue1", "blue2", "blue3", "blue4", "blue1"],
+    missing: 4,
+    options: ["blue1", "blue2", "blue3"],
+    correct: "blue2",
+    explanation: "Sequência crescente de tons: do mais escuro ao mais claro."
   }
-  const start = 1 + Math.floor(Math.random() * 5);
-  const seq = Array.from({ length }, (_, i) => start + i * step);
-  return { seq, answer: seq[seq.length - 1] + step };
-}
+];
 
-export default function SequenciaLogicaVisual() {
-  const levels: Level[] = ["Iniciante", "Intermediário", "Avançado"];
-  const [level, setLevel] = useState<Level>("Iniciante");
-  const [sequence, setSequence] = useState<Sequence>(generateSequence("Iniciante"));
-  const [input, setInput] = useState("");
+const SequenciaLogica: React.FC = () => {
+  const [currentLevel, setCurrentLevel] = useState(1);
+  const [score, setScore] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+  const [currentPatternIndex, setCurrentPatternIndex] = useState(0);
+  const [gameState, setGameState] = useState<"playing" | "answered" | "finished">("playing");
   const [feedback, setFeedback] = useState("");
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [glow, setGlow] = useState(false);
+  const [explanation, setExplanation] = useState("");
 
-  const successSound = useRef(new Audio("/sounds/success.mp3"));
-  const failSound = useRef(new Audio("/sounds/fail.mp3"));
+  const currentPattern = patterns[currentPatternIndex];
 
-  useEffect(() => {
-    setSequence(generateSequence(level));
-  }, [level]);
+  // Função para criar o elemento da forma (div)
+  function createShape(item: string | PatternItem, isMissing = false, isCorrect = false) {
+    let classes = styles.shape;
+    let content = "";
 
-  const handleSubmit = () => {
-    if (parseInt(input) === sequence.answer) {
-      setFeedback("✅ Correto!");
-      setGlow(true);
-      setShowConfetti(true);
-      successSound.current.play();
-      setProgress((prev) => prev + 1);
-
-      setTimeout(() => {
-        setGlow(false);
-        setShowConfetti(false);
-        setFeedback("");
-        setInput("");
-        setSequence(generateSequence(level));
-      }, 1500);
+    if (isMissing) {
+      classes += ` ${styles.missing}`;
+      content = "?";
+    } else if (typeof item === "string") {
+      classes += ` ${styles[item]}`;
+      content = "■";
     } else {
-      setFeedback("❌ Tente novamente!");
-      failSound.current.play();
+      classes += ` ${styles[item.color]}`;
+      if (item.shape) {
+        classes += ` ${styles[item.shape]}`;
+        content = item.shape === "circle" ? "●" : item.shape === "square" ? "■" : "";
+      } else {
+        content = "■"; // Default para quadrado
+      }
     }
-  };
 
-  const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLevel(e.target.value as Level);
-    setProgress(0);
-  };
+    return <div className={classes}>{content}</div>;
+  }
 
-  const levelColors: Record<Level, string> = {
-    "Iniciante": "#60a5fa",
-    "Intermediário": "#fbbf24",
-    "Avançado": "#f87171"
-  };
+  // Lidar com a seleção de uma opção
+  function handleSelect(option: string | PatternItem) {
+    if (gameState !== "playing") return;
+
+    setTotalQuestions(prev => prev + 1);
+
+    const isCorrect = JSON.stringify(option) === JSON.stringify(currentPattern.correct);
+
+    if (isCorrect) {
+      setCorrectAnswers(prev => prev + 1);
+      setScore(prev => prev + currentPattern.level * 10);
+      setFeedback("🎉 Correto! Muito bem!");
+      setExplanation(currentPattern.explanation);
+    } else {
+      setFeedback("❌ Ops! Tente observar o padrão novamente.");
+      setExplanation(currentPattern.explanation);
+    }
+    setGameState("answered");
+  }
+
+  // Passar para o próximo padrão
+  function nextPattern() {
+    if (currentPatternIndex + 1 >= patterns.length) {
+      setFeedback(
+        `🏆 Parabéns! Você completou todos os padrões!\nPrecisão: ${Math.round(
+          (correctAnswers / totalQuestions) * 100
+        )}%\nPontuação final: ${score} pontos`
+      );
+      setGameState("finished");
+      return;
+    }
+
+    const newLevel = patterns[currentPatternIndex + 1].level;
+    if (newLevel > currentLevel) {
+      setFeedback(`🎊 Nível ${newLevel} desbloqueado!`);
+      setCurrentLevel(newLevel);
+    } else {
+      setFeedback("");
+    }
+
+    setCurrentPatternIndex(prev => prev + 1);
+    setGameState("playing");
+    setExplanation("");
+  }
+
+  // Reiniciar o jogo
+  function restartGame() {
+    setCurrentPatternIndex(0);
+    setCurrentLevel(1);
+    setScore(0);
+    setCorrectAnswers(0);
+    setTotalQuestions(0);
+    setGameState("playing");
+    setFeedback("");
+    setExplanation("");
+  }
+
+  const isGameFinished = gameState === "finished";
 
   return (
-    <div
-      className={styles.gameCard}
-      style={{
-        background: levelColors[level],
-        transition: "background 0.5s ease",
-        boxShadow: glow
-          ? "0 0 20px #fff, 0 0 40px #fff"
-          : "0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05)"
-      }}
-    >
-      {showConfetti && <Confetti numberOfPieces={150} recycle={false} />}
-      <div className={styles.cardContent}>
-        <h3 className={styles.cardTitle}>{level} - Sequência Lógica</h3>
-        <p className={styles.cardDescription}>
-          Aprenda sobre sequências e padrões através de desafios progressivos.
-        </p>
+    <div className={styles["game-container"]}>
+      <h1>🧩 Sequências e Padrões</h1>
+      <p className={styles.subtitle}>Complete a sequência com a forma correta!</p>
 
-        <div className={styles.levelSelector}>
-          <label className={styles.label}>Nível:</label>
-          <select
-            value={level}
-            onChange={handleLevelChange}
-            className={styles.select}
-          >
-            {levels.map((lvl) => (
-              <option key={lvl} value={lvl}>{lvl}</option>
-            ))}
-          </select>
-        </div>
-
-        <p className={styles.subtitle}>
-          Sequência:{" "}
-          {sequence.seq.map((num, idx) => (
-            <span
-              key={idx}
-              style={{
-                transition: "all 0.3s ease",
-                textShadow: glow ? "0 0 10px #fff, 0 0 20px #fff" : "none"
-              }}
-            >
-              {num}{idx < sequence.seq.length - 1 ? ", " : ""}
-            </span>
-          ))}
-          ?
-        </p>
-
-        <input
-          type="number"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Digite o próximo número"
-          className={styles.input}
-        />
-
-        <button onClick={handleSubmit} className={styles.button}>
-          Conferir
-        </button>
-
-        {feedback && (
-          <p
-            className={`${styles.feedback} ${feedback.includes("✅") ? styles.success : styles.fail}`}
-          >
-            {feedback}
-          </p>
-        )}
-
-        <div className={styles.progressBar}>
-          <div
-            className={styles.progress}
-            style={{ width: `${(progress % 5) * 20}%` }}
-          ></div>
-        </div>
+      <div className={styles["score-board"]}>
+        <div className={styles.score}>Pontos: {score}</div>
+        <div className={styles.level}>Nível {currentLevel}</div>
+        <div className={styles.score}>Acertos: {correctAnswers}/{totalQuestions}</div>
       </div>
+
+      <div className={styles["pattern-display"]}>
+        <div className={styles["pattern-title"]}>Qual é o próximo?</div>
+        <div className={styles.sequence}>
+          {currentPattern.sequence.map((item, idx) =>
+            <div key={idx}>
+              {idx === currentPattern.missing && gameState === "answered" ? (
+                createShape(currentPattern.correct, false, true)
+              ) : (
+                createShape(item, idx === currentPattern.missing)
+              )}
+            </div>
+          )}
+        </div>
+        {!isGameFinished && (
+          <div className={styles.options}>
+            {currentPattern.options.map((opt, idx) => (
+              <div
+                key={idx}
+                className={`${styles.option} ${
+                  gameState === "answered" && JSON.stringify(opt) === JSON.stringify(currentPattern.correct)
+                    ? styles.correct
+                    : ""
+                } ${
+                  gameState === "answered" && JSON.stringify(opt) !== JSON.stringify(currentPattern.correct)
+                    ? styles.incorrect
+                    : ""
+                }`}
+                onClick={() => handleSelect(opt)}
+              >
+                {createShape(opt)}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div
+        className={`${styles.feedback} ${
+          gameState === "answered"
+            ? styles.correct
+            : ""
+        }`}
+      >
+        {feedback}
+      </div>
+      {explanation && <div className={styles.explanation}>{explanation}</div>}
+
+      <button
+        className={styles["next-button"]}
+        onClick={isGameFinished ? restartGame : nextPattern}
+        disabled={gameState === "playing" && !isGameFinished}
+      >
+        {isGameFinished ? "Jogar Novamente" : "Próximo Padrão"}
+      </button>
     </div>
   );
-}
+};
+
+export default SequenciaLogica;

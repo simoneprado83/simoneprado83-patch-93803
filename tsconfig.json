@@ -9,7 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "node16",
-    "moduleResolution": "nodenext",  // Use "bundler" se tiver TS >= 5.0 e editor compatível
+    "moduleResolution": "bundler",  // Use "bundler" se tiver TS >= 5.0 e editor compatível
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
