@@ -12,8 +12,7 @@ import './index.css';
 import LabirintoPage from './components/Labirinto/LabirintoPage';
 import PuzzlePage from './components/Puzzle/Puzzle';
 
-// Importe os novos componentes para as páginas "Sobre" e "Contato"
-// Crie esses arquivos se eles não existirem ainda
+
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GamesPage from './pages/GamesPage';
@@ -52,7 +51,7 @@ function App() {
                   <Hero scrollToGames={scrollToGames} />
                   <Games playGame={playGame} />
                   <Features />
-                  <Footer />
+                  
                 </>
               }
             />

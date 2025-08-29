@@ -1,4 +1,5 @@
 import styles from './Footer.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -19,13 +20,13 @@ const Footer = () => {
               divertida e interativa.
             </p>
             <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialIcon}>
+              <a href="mailto:pradowebplay@gmail.com" className={styles.socialIcon}>
                 <span className={styles.socialEmoji}>📧</span>
               </a>
-              <a href="#" className={styles.socialIcon}>
+              <a href="tel:5535992528175" className={styles.socialIcon}>
                 <span className={styles.socialEmoji}>📱</span>
               </a>
-              <a href="#" className={styles.socialIcon}>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
                 <span className={styles.socialEmoji}>🐦</span>
               </a>
             </div>
@@ -34,24 +35,24 @@ const Footer = () => {
             <h4 className={styles.linksTitle}>Links Rápidos</h4>
             <ul className={styles.linksList}>
               <li>
-                <a href="#hero" className={styles.link}>
+                <NavLink to="/" className={styles.link}>
                   Início
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#games" className={styles.link}>
+                <NavLink to="/jogos" className={styles.link}>
                   Jogos
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#features" className={styles.link}>
+                <NavLink to="/sobre" className={styles.link}>
                   Sobre Nós
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#footer" className={styles.link}>
+                <NavLink to="/contato" className={styles.link}>
                   Contato
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -83,7 +84,7 @@ const Footer = () => {
         </div>
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © 2024 CodePlay. Todos os direitos reservados. Feito com ❤ para
+            © 2025 CodePlay. Todos os direitos reservados. Feito com ❤ para
             educadores e estudantes.
           </p>
         </div>
