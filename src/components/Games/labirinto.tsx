@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import LabirintoPage from "../Labirinto/Labirinto";
+import LabirintoPage from "../Labirinto/LabirintoPage";
+import styles from "./labirinto.module.css";
 
-export default function SequenciaPage() {
+export default function Labirinto() {
   const navigate = useNavigate();
 
   return (
-    <div className="px-4 py-8">
-      <button
-        className="button mb-4"
+    <>
+    <button
+        className={`${styles.button} ${styles["mb-4"]}`}
         onClick={() => navigate("/")}
       >
         Voltar à Página Inicial
       </button>
+    <div className="px-4 py-8">
+      
       <LabirintoPage />
     </div>
+    </>
   );
 }

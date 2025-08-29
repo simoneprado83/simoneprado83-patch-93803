@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import PuzzlePage from "../Puzzle/Puzzle";
 
-export default function SequenciaPage() {
+export default function Puzzle() {
   const navigate = useNavigate();
 
   return (

@@ -9,7 +9,7 @@ import Footer from './components/Footer/';
 import SequenciaPage from './components/Games/sequencia';
 
 import './index.css'; // Importa os estilos globais
-import LabirintoPage from './components/Labirinto/Labirinto';
+import LabirintoPage from './components/Labirinto/LabirintoPage';
 import PuzzlePage from './components/Puzzle/Puzzle';
 
 function App() {
