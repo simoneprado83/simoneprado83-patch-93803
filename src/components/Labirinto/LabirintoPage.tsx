@@ -1,4 +1,5 @@
 // src/components/LabirintoPage.tsx
+
 import React, { useState, useEffect } from 'react';
 import styles from './Labirinto.module.css';
 

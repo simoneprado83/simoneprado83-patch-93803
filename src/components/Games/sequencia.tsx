@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import SequenciaLogicaVisual from "../Sequencia/SequenciaLogicaVisual";
 import styles from "./sequencia.module.css";
