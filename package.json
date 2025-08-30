@@ -1,6 +1,6 @@
 {
   "name": "simoneprado83-patch-93803",
-   "homepage": "https://simoneprado83.github.io/simoneprado83-patch-93803/",
+  "homepage": "https://simoneprado83.github.io/simoneprado83-patch-93803/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,12 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview && gh-pages -d build",
+    "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.1.1",
