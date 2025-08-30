@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./CodePuzzle.module.css";
 import { Challenge } from "./types";
 
@@ -28,19 +28,19 @@ export default function PuzzlePage() {
   const [userSolution, setUserSolution] = useState<string[]>([]);
   const [draggedBlock, setDraggedBlock] = useState<string | null>(null);
 
-  // Função para carregar um novo desafio
-  const loadChallenge = () => {
+  // Use useCallback para memorizar a função e evitar o aviso do React
+  const loadChallenge = useCallback(() => {
     const newChallenge = challenges[level - 1];
     setCurrentChallenge(newChallenge);
     const shuffled = [...newChallenge.solution].sort(() => Math.random() - 0.5);
     setShuffledBlocks(shuffled);
     setUserSolution(Array(newChallenge.solution.length).fill(null));
-  };
+  }, [level]); // A dependência de loadChallenge é o 'level'
 
   // Carrega o desafio inicial quando o componente é montado ou o nível muda
   useEffect(() => {
     loadChallenge();
-  }, [level]);
+  }, [loadChallenge]); // Adicione loadChallenge como dependência
 
   // Funções de Drag and Drop
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>, block: string) => {
