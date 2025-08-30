@@ -1,4 +1,4 @@
-import React from 'react';
+
 import React, { useState, useEffect, DragEvent } from 'react';
 import styles from './CodePuzzle.module.css'; // ✨ Importe como um módulo CSS
 import { Challenge } from './types';

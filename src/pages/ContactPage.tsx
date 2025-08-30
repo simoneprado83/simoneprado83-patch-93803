@@ -89,7 +89,7 @@ const styles = {
     borderRadius: '20px',
     padding: '40px',
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-    textAlign: 'center' as 'center',
+    textAlign: 'center' 
   },
   title: {
     fontSize: '2.5rem',
@@ -110,20 +110,20 @@ const styles = {
   },
   form: {
     display: 'flex',
-    flexDirection: 'column' as 'column',
-    alignItems: 'stretch' as 'stretch',
+    flexDirection: 'column',
+    alignItems: 'stretch',
     gap: '20px',
     marginTop: '30px',
     marginBottom: '30px',
   },
   formGroup: {
-    textAlign: 'left' as 'left',
+    textAlign: 'left',
   },
   label: {
     display: 'block',
     marginBottom: '8px',
     fontSize: '1rem',
-    fontWeight: 'bold' as 'bold',
+    fontWeight: 'bold',
   },
   input: {
     width: '100%',
@@ -142,7 +142,7 @@ const styles = {
     background: 'rgba(255, 255, 255, 0.2)',
     color: 'white',
     outline: 'none',
-    resize: 'vertical' as 'vertical',
+    resize: 'vertical',
   },
   submitButton: {
     background: 'linear-gradient(45deg, #fbbf24, #f59e0b)',
@@ -151,7 +151,7 @@ const styles = {
     padding: '15px 30px',
     borderRadius: '25px',
     fontSize: '1rem',
-    fontWeight: 'bold' as 'bold',
+    fontWeight: 'bold',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
@@ -167,7 +167,7 @@ const styles = {
   infoLink: {
     color: '#fff',
     textDecoration: 'underline',
-    fontWeight: 'bold' as 'bold',
+    fontWeight: 'bold',
   },
   backButton: {
     background: 'transparent',
