@@ -1,20 +1,69 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import styles from "./CodePuzzle.module.css";
+import { Challenge } from "./types";
+
+// Dados de exemplo para os desafios do jogo
+const challenges: Challenge[] = [
+  {
+    description: "Crie uma variável 'x' e atribua o valor 10.",
+    solution: ["const x = 10;"]
+  },
+  {
+    description: "Crie uma função que retorna a soma de dois números.",
+    solution: ["function sum(a, b) {", "return a + b;", "}"]
+  },
+  {
+    description: "Declare um array com os números 1, 2 e 3.",
+    solution: ["const numbers = [1, 2, 3];"]
+  }
+];
 
 export default function PuzzlePage() {
-  // Sequência de números embaralhada
-  const [sequencia, setSequencia] = useState([1, 2, 3, 4, 5]);
-  const [embaralhada, setEmbaralhada] = useState(
-    [...sequencia].sort(() => Math.random() - 0.5)
-  );
-  const [mensagem, setMensagem] = useState("");
+  const [level, setLevel] = useState(1);
+  const [score, setScore] = useState(0);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentChallenge, setCurrentChallenge] = useState<Challenge>(challenges[0]);
+  const [shuffledBlocks, setShuffledBlocks] = useState<string[]>([]);
+  const [userSolution, setUserSolution] = useState<string[]>([]);
+  const [draggedBlock, setDraggedBlock] = useState<string | null>(null);
 
-  // Função para trocar posição de elementos
-  const trocar = (index1: number, index2: number) => {
-    const nova = [...embaralhada];
-    [nova[index1], nova[index2]] = [nova[index2], nova[index1]];
-    setEmbaralhada(nova);
+  // Função para carregar um novo desafio
+  const loadChallenge = () => {
+    const newChallenge = challenges[level - 1];
+    setCurrentChallenge(newChallenge);
+    const shuffled = [...newChallenge.solution].sort(() => Math.random() - 0.5);
+    setShuffledBlocks(shuffled);
+    setUserSolution(Array(newChallenge.solution.length).fill(null));
   };
 
+  // Carrega o desafio inicial quando o componente é montado ou o nível muda
+  useEffect(() => {
+    loadChallenge();
+  }, [level]);
+
+  // Funções de Drag and Drop
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>, block: string) => {
+    setDraggedBlock(block);
+    e.dataTransfer.setData("text/plain", block);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>, position: number) => {
+    e.preventDefault();
+    if (draggedBlock) {
+      const newUserSolution = [...userSolution];
+      newUserSolution[position] = draggedBlock;
+      setUserSolution(newUserSolution);
+      setShuffledBlocks(shuffledBlocks.filter(block => block !== draggedBlock));
+      setDraggedBlock(null);
+    }
+  };
+
+  // Funções de Lógica do Jogo
   const checkSolution = () => {
     const correct = userSolution.every((code, index) => code === currentChallenge.solution[index]);
     setIsCorrect(correct);
@@ -37,6 +86,7 @@ export default function PuzzlePage() {
     }
   };
 
+  // Renderização do JSX
   return (
     <div className={styles['game-container']}>
       <div className={styles['main-content']}>
@@ -143,5 +193,4 @@ export default function PuzzlePage() {
       </div>
     </div>
   );
-};
-
+}
