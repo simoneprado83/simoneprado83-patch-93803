@@ -7,7 +7,7 @@ interface GamesSectionProps {
   playGame: (gameType: string) => void;
 }
 
-const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
+const GamesSection: React.FC<GamesSectionProps> = () => {
   return (
     <section id="games" className={styles.gamesSection}>
       <div className={`${styles.container} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
