@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
-import react from React from '@vitejs/plugin-react' 
+import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
+  // base: '/simoneprado83-patch-93803/', // ✨ Comente esta linha
   plugins: [react()],
-  base: '/simoneprado83-patch-93803/',  
 })
