@@ -1,77 +1,18 @@
+import { useState } from "react";
 
-import React, { useState, useEffect, DragEvent } from 'react';
-import styles from './CodePuzzle.module.css'; // ✨ Importe como um módulo CSS
-import { Challenge } from './types';
+export default function PuzzlePage() {
+  // Sequência de números embaralhada
+  const [sequencia, setSequencia] = useState([1, 2, 3, 4, 5]);
+  const [embaralhada, setEmbaralhada] = useState(
+    [...sequencia].sort(() => Math.random() - 0.5)
+  );
+  const [mensagem, setMensagem] = useState("");
 
-
-const challenges: Challenge[] = [
-  {
-    description: "Crie um programa que exibe 'Olá, Mundo!' na tela",
-    blocks: ["print('Olá, Mundo!')", "# Meu primeiro programa", "# Fim do programa"],
-    solution: ["# Meu primeiro programa", "print('Olá, Mundo!')", "# Fim do programa"],
-  },
-  {
-    description: "Crie uma variável chamada 'nome' e exiba seu valor",
-    blocks: ["print(nome)", "nome = 'João'", "# Trabalhando com variáveis"],
-    solution: ["# Trabalhando com variáveis", "nome = 'João'", "print(nome)"],
-  },
-  {
-    description: "Faça um programa que soma dois números",
-    blocks: ["resultado = a + b", "print(resultado)", "a = 5", "b = 3"],
-    solution: ["a = 5", "b = 3", "resultado = a + b", "print(resultado)"],
-  },
-  {
-    description: "Crie um loop que conta de 1 a 3",
-    blocks: ["for i in range(1, 4):", "  print(i)", "# Loop simples"],
-    solution: ["# Loop simples", "for i in range(1, 4):", "  print(i)"],
-  },
-];
-
-const PuzzlePage: React.FC = () => {
-  const [level, setLevel] = useState<number>(1);
-  const [score, setScore] = useState<number>(0);
-  const [currentChallenge, setCurrentChallenge] = useState<Challenge>(challenges[0]);
-  const [userSolution, setUserSolution] = useState<string[]>([]);
-  const [shuffledBlocks, setShuffledBlocks] = useState<string[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const [draggedItem, setDraggedItem] = useState<string | null>(null);
-
-  useEffect(() => {
-    loadChallenge();
-  }, [level]);
-
-  const loadChallenge = () => {
-    const challenge = challenges[level - 1];
-    if (challenge) {
-      setCurrentChallenge(challenge);
-      setUserSolution(Array(challenge.solution.length).fill(''));
-      setShuffledBlocks([...challenge.blocks].sort(() => Math.random() - 0.5));
-    } else {
-      setIsCorrect(true);
-      setIsModalOpen(true);
-    }
-  };
-
-  const handleDragStart = (e: DragEvent<HTMLDivElement>, block: string) => {
-    setDraggedItem(block);
-    e.dataTransfer.setData('text/plain', block);
-  };
-
-  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = (e: DragEvent<HTMLDivElement>, position: number) => {
-    e.preventDefault();
-    if (!draggedItem) return;
-
-    const newSolution = [...userSolution];
-    newSolution[position] = draggedItem;
-    setUserSolution(newSolution);
-
-    setShuffledBlocks(shuffledBlocks.filter(block => block !== draggedItem));
-    setDraggedItem(null);
+  // Função para trocar posição de elementos
+  const trocar = (index1: number, index2: number) => {
+    const nova = [...embaralhada];
+    [nova[index1], nova[index2]] = [nova[index2], nova[index1]];
+    setEmbaralhada(nova);
   };
 
   const checkSolution = () => {
