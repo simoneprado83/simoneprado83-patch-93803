@@ -57,9 +57,9 @@ function App() {
             />
 
             {/* Rotas dos jogos */}
-            <Route path="/sequencia" element={<SequenciaPage />} />
-            <Route path="/labirinto" element={<LabirintoPage />} />
-            <Route path="/puzzle" element={<PuzzlePage />} />
+            <Route path="#/sequencia" element={<SequenciaPage />} />
+            <Route path="#/labirinto" element={<LabirintoPage />} />
+            <Route path="#/puzzle" element={<PuzzlePage />} />
             
             {/* Novas rotas para as páginas de navegação do cabeçalho */}
             <Route path="/sobre" element={<AboutPage />} />
