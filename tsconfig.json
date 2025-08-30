@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "noPropertyAccessFromIndexSignature": false, // Adicione esta linha
     "skipLibCheck": true,
     "esModuleInterop": true,
