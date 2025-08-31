@@ -9,7 +9,7 @@ export default function Puzzle() {
     <div className="px-4 py-8">
       <button
         className="button mb-4"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/#")}
       >
         Voltar à Página Inicial
       </button>

@@ -10,7 +10,7 @@ export default function Labirinto() {
     <>
     <button
         className={`${styles.button} ${styles["mb-4"]}`}
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/#")}
       >
         Voltar à Página Inicial
       </button>
