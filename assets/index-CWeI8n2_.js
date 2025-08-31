@@ -558,7 +558,7 @@ function N1() {
               }),
               o.jsx(Ml, { path: "/#sequencia", element: o.jsx(c1, {}) }),
               o.jsx(Ml, { path: "/#labirinto", element: o.jsx(p1, {}) }),
-              o.jsx(Ml, { path: "/#puzzle", element: o.jsx(S1, {}) }),
+              o.jsx(Ml, { path: "https://simoneprado83.github.io/simoneprado83-patch-93803/#puzzle", element: o.jsx(S1, {}) }),
               o.jsx(Ml, { path: "/sobre", element: o.jsx(_1, {}) }),
               o.jsx(Ml, { path: "/contato", element: o.jsx(x1, {}) }),
               o.jsx(Ml, {
