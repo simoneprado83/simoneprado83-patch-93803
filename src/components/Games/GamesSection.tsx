@@ -1,5 +1,5 @@
-// src/components/Games/GamesSection.tsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Games.module.css';
 
 // Defina as props, já que o componente GamesSection agora precisa da função playGame
@@ -8,6 +8,15 @@ interface GamesSectionProps {
 }
 
 const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
+  const navigate = useNavigate();
+
+  const handlePlayGame = (gameType: string, path: string) => {
+    // Chama a função playGame do componente pai
+    playGame(gameType);
+    // Em seguida, usa o hook de navegação para mudar de rota
+    navigate(path);
+  };
+  
   return (
     <section id="games" className={styles.gamesSection}>
       <div className={`${styles.container} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
@@ -28,7 +37,7 @@ const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
                 <span className={`${styles.level} ${styles.blueLevel}`}>Iniciante</span>
                 <span className={styles.rating}>⭐ 4.8</span>
               </div>
-              <button className="button mt-4 w-full" onClick={() => playGame('sequencia')}>Jogar</button>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('sequencia', '/sequencia')}>Jogar</button>
             </div>
           </div>
 
@@ -44,7 +53,7 @@ const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
                 <span className={`${styles.level} ${styles.greenLevel}`}>Intermediário</span>
                 <span className={styles.rating}>⭐ 4.9</span>
               </div>
-              <button className="button mt-4 w-full" onClick={() => (window.location.href = '/labirinto')}>Jogar</button>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('labirinto', '/labirinto')}>Jogar</button>
             </div>
           </div>
 
@@ -60,7 +69,7 @@ const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
                 <span className={`${styles.level} ${styles.purpleLevel}`}>Avançado</span>
                 <span className={styles.rating}>⭐ 4.7</span>
               </div>
-              <button className="button mt-4 w-full" onClick={() => (window.location.href = '/puzzle')}>Jogar</button>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('puzzle', '/puzzle')}>Jogar</button>
             </div>
           </div>
         </div>

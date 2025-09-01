@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Games.module.css';
 
 interface GamesProps {
@@ -16,7 +17,7 @@ const gameData = [
   },
   {
     type: 'labirinto',
-    emoji: '🏃‍♂',
+    emoji: '🏃‍♂️',
     title: 'Labirinto do Código',
     description: 'Navegue por labirintos usando comandos de programação básicos.',
     level: 'Intermediário',
@@ -29,6 +30,30 @@ const gameData = [
     description: 'Resolva quebra-cabeças criando algoritmos eficientes.',
     level: 'Avançado',
     rating: '⭐ 4.7',
+  },
+  {
+    type: 'debug',
+    emoji: '🐛',
+    title: 'Detetive de Bugs',
+    description: 'Encontre e corrija erros em códigos para desenvolver sua lógica.',
+    level: 'Intermediário',
+    rating: '⭐ 4.6',
+  },
+  {
+    type: 'loops',
+    emoji: '🔄',
+    title: 'Labirinto de Laços',
+    description: 'Domine a arte de loops e iterações para resolver desafios complexos.',
+    level: 'Avançado',
+    rating: '⭐ 4.9',
+  },
+  {
+    type: 'condicoes',
+    emoji: '🚦',
+    title: 'Sinais e Condições',
+    description: 'Aprenda a usar declarações condicionais para controlar o fluxo de programas.',
+    level: 'Iniciante',
+    rating: '⭐ 4.5',
   },
   // outros jogos...
 ];
@@ -83,46 +108,23 @@ const GameCard: React.FC<{
           <span className={styles.rating}>{game.rating}</span>
         </div>
 
-        {/* Botão do card */}
-        {game.type === 'sequencia' && (
-          <button
-            className="button mt-4 w-full"
-            onClick={() => (window.location.href = '/sequencia')}
-          >
-            Jogar
-          </button>
-        )}
-        {game.type === 'labirinto' && (
-          <button
-            className="button mt-4 w-full"
-            onClick={() => (window.location.href = '/labirinto')}
-          >
-            Jogar
-          </button>
-        )}
-        {game.type === 'puzzle' && (
-          <button
-            className="button mt-4 w-full"
-            onClick={() => (window.location.href = '/puzzle')}
-          >
-            Jogar
-          </button>
-        )}
-        {game.type !== 'sequencia' &&
-          game.type !== 'labirinto' &&
-          game.type !== 'puzzle' && (
-            <button className="button mt-4 w-full" onClick={onClick}>
-              Jogar
-            </button>
-          )}
+        {/* Botão do card que agora sempre usa a prop onClick */}
+        <button className="button mt-4 w-full" onClick={onClick}>
+          Jogar
+        </button>
       </div>
     </div>
   );
 };
 
 const Games: React.FC<GamesProps> = ({ playGame }) => {
+  const navigate = useNavigate();
+
   const handleCardClick = (gameType: string) => {
-    playGame(gameType); // outros jogos continuam chamando playGame
+    // 1. Chama a função playGame do componente pai (App.tsx)
+    playGame(gameType);
+    // 2. Navega para a rota do jogo usando React Router
+    navigate(`/${gameType}`);
   };
 
   return (

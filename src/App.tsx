@@ -3,7 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from './components/Header/';
 import Hero from './components/Hero/';
-import Games from './components/Games/';
+import GamesSection from './components/Games/';
 import Features from './components/Features/';
 import Footer from './components/Footer/';
 import SequenciaPage from './components/Games/sequencia';
@@ -27,11 +27,13 @@ function App() {
   const scrollToGames = () => {
     document.getElementById('games')?.scrollIntoView({ behavior: 'smooth' });
   };
-
+  
+  // A função playGame agora será uma prop para as páginas que precisam dela
+  // Ela será responsável por iniciar o jogo, e a navegação será gerenciada pelas páginas
   const playGame = (gameType: string) => {
-    alert(
-      `Iniciando ${gameType}! Em breve você será redirecionado para o jogo.`
-    );
+    // Você pode adicionar alguma lógica aqui, se necessário.
+    // Por exemplo, registrar um evento ou carregar dados do jogo.
+    console.log(`Iniciando o jogo: ${gameType}`);
   };
 
   return (
@@ -49,15 +51,17 @@ function App() {
               element={
                 <>
                   <Hero scrollToGames={scrollToGames} />
-                  <Games playGame={playGame} />
+                  {/* Passe a função para o componente Games */}
+                  <GamesSection playGame={playGame} />
                   <Features />
-                  
                 </>
               }
             />
 
-            {/* Rotas dos jogos */}
-            <Route path="/sequencia" element={<SequenciaPage/>} />
+            {/* Rotas dos jogos - Mantenha a lógica de roteamento aqui */}
+            {/* Note que as páginas dos jogos não precisam mais receber a prop playGame
+            pois a navegação é feita pelos botões da GamesSection */}
+            <Route path="/sequencia" element={<SequenciaPage />} />
             <Route path="/labirinto" element={<LabirintoPage />} />
             <Route path="/puzzle" element={<PuzzlePage />} />
             
