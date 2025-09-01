@@ -10,7 +10,7 @@ export default function SequenciaPage() {
     <div className="px-4 py-8">
       <button
         className={`${styles.button} ${styles["mb-4"]}`}
-        onClick={() => navigate("/#")}
+        onClick={() => navigate("/")}
       >
         Voltar à Página Inicial
       </button>

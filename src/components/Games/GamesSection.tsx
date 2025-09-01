@@ -2,12 +2,12 @@
 import React from 'react';
 import styles from './Games.module.css';
 
-// Defina as props se o componente precisar de dados externos
+// Defina as props, já que o componente GamesSection agora precisa da função playGame
 interface GamesSectionProps {
   playGame: (gameType: string) => void;
 }
 
-const GamesSection: React.FC<GamesSectionProps> = () => {
+const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
   return (
     <section id="games" className={styles.gamesSection}>
       <div className={`${styles.container} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
@@ -28,7 +28,7 @@ const GamesSection: React.FC<GamesSectionProps> = () => {
                 <span className={`${styles.level} ${styles.blueLevel}`}>Iniciante</span>
                 <span className={styles.rating}>⭐ 4.8</span>
               </div>
-              <button className="button mt-4 w-full" onClick={() => (window.location.href = '/sequencia')}>Jogar</button>
+              <button className="button mt-4 w-full" onClick={() => playGame('sequencia')}>Jogar</button>
             </div>
           </div>
 
@@ -66,7 +66,6 @@ const GamesSection: React.FC<GamesSectionProps> = () => {
         </div>
       </div>
     </section>
-     
   );
 };
 
