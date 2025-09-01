@@ -15,6 +15,114 @@ const challenges: Challenge[] = [
   {
     description: "Declare um array com os números 1, 2 e 3.",
     solution: ["const numbers = [1, 2, 3];"]
+  },
+  {
+    description: "Declare uma variável 'name' e atribua a string 'Alice'.",
+    solution: ["const name = 'Alice';"]
+  },
+  {
+    description: "Crie um objeto 'person' com as propriedades 'name' e 'age'.",
+    solution: ["const person = {", "  name: 'Bob',", "  age: 25", "};"]
+  },
+  {
+    description: "Escreva uma instrução 'if' que verifica se 'x' é maior que 5.",
+    solution: ["if (x > 5) {", "  // código a ser executado", "}"]
+  },
+  {
+    description: "Crie um loop 'for' que itera de 0 a 4.",
+    solution: ["for (let i = 0; i < 5; i++) {", "  // código a ser executado", "}"]
+  },
+  {
+    description: "Crie uma função de seta (arrow function) que retorna 'Hello'.",
+    solution: ["const sayHello = () => 'Hello';"]
+  },
+  {
+    description: "Importe o 'useState' do React.",
+    solution: ["import { useState } from 'react';"]
+  },
+  {
+    description: "Escreva uma instrução 'switch' para a variável 'day'.",
+    solution: ["switch (day) {", "  case 'Mon':", "    // código", "    break;", "}"]
+  },
+  {
+    description: "Crie uma função que recebe um array e retorna o primeiro elemento.",
+    solution: ["function getFirstElement(arr) {", "  return arr[0];", "}"]
+  },
+  {
+    description: "Adicione um evento de clique a um botão usando 'onClick'.",
+    solution: ["<button onClick={() => {", "  // ação", "}}>Clique</button>"]
+  },
+  {
+    description: "Use o método 'map' para criar um novo array de números duplicados.",
+    solution: ["const numbers = [1, 2, 3];", "const duplicated = numbers.map(num => num * 2);"]
+  },
+  {
+    description: "Escreva a sintaxe básica de um componente funcional em React.",
+    solution: ["function MyComponent() {", "  return (", "    <div>Olá Mundo</div>", "  );", "}"]
+  },
+  {
+    description: "Declare uma variável booleana 'isLoggedIn' e defina como 'true'.",
+    solution: ["const isLoggedIn = true;"]
+  },
+  {
+    description: "Use o operador de 'spread' para combinar dois arrays.",
+    solution: ["const arr1 = [1, 2];", "const arr2 = [3, 4];", "const combined = [...arr1, ...arr2];"]
+  },
+  {
+    description: "Escreva uma instrução 'if/else' que verifica se 'age' é maior ou igual a 18.",
+    solution: ["if (age >= 18) {", "  // maior de idade", "} else {", "  // menor de idade", "}"]
+  },
+  {
+    description: "Crie um loop 'while' que executa enquanto 'count' for menor que 3.",
+    solution: ["let count = 0;", "while (count < 3) {", "  count++;", "}"]
+  },
+  {
+    description: "Use a desestruturação de objeto para extrair 'name' e 'age'.",
+    solution: ["const person = { name: 'Dan', age: 30 };", "const { name, age } = person;"]
+  },
+  {
+    description: "Crie uma função assíncrona 'fetchData'.",
+    solution: ["async function fetchData() {", "  // código assíncrono", "}"]
+  },
+  {
+    description: "Use o operador ternário para atribuir um valor com base em uma condição.",
+    solution: ["const status = isLoggedIn ? 'Online' : 'Offline';"]
+  },
+  {
+    description: "Declare uma classe 'Carro' com um construtor que recebe 'marca'.",
+    solution: ["class Carro {", "  constructor(marca) {", "    this.marca = marca;", "  }", "}"]
+  },
+  {
+    description: "Use 'useEffect' para executar um efeito quando o componente for montado.",
+    solution: ["useEffect(() => {", "  // código do efeito", "}, []);"]
+  },
+  {
+    description: "Declare um objeto vazio 'user'.",
+    solution: ["const user = {};"]
+  },
+  {
+    description: "Crie uma função 'multiply' que retorna a multiplicação de dois números.",
+    solution: ["function multiply(a, b) {", "  return a * b;", "}"]
+  },
+  {
+    description: "Use o método 'filter' para obter apenas os números pares de um array.",
+    solution: ["const numbers = [1, 2, 3, 4, 5];", "const even = numbers.filter(num => num % 2 === 0);"]
+  },
+  {
+    description: "Crie uma instrução 'try...catch' para lidar com erros.",
+    solution: ["try {", "  // código que pode causar erro", "} catch (error) {", "  // código para lidar com o erro", "}"]
+  },
+  {
+    description: "Declare uma variável com 'let' e reatribua um novo valor a ela.",
+    solution: ["let count = 5;", "count = 10;"]
+  },
+  {
+    description: "Crie uma função que aceita um array de strings e as junta em uma única string.",
+    solution: ["function joinStrings(arr) {", "  return arr.join(' ');", "}"]
+  },
+  {
+    description: "Use 'const' para declarar uma variável que não pode ser reatribuída.",
+    solution: ["const PI = 3.14159;"]
   }
 ];
 
