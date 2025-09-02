@@ -4,6 +4,22 @@
   background: linear-gradient(180deg, #f9fafb, #ffffff);
 }
 
+/* Novo container para controlar as margens laterais e centralizar o conteúdo */
+.container {
+  max-width: 96rem; /* Largura máxima para a seção */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* Margem lateral no mobile */
+  padding-right: 1.5rem; /* Margem lateral no mobile */
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 3rem; /* Margem lateral maior no desktop */
+    padding-right: 3rem; /* Margem lateral maior no desktop */
+  }
+}
+
 .headerText {
   text-align: center;
   margin-bottom: 3rem;
@@ -35,87 +51,103 @@
 
 .gameGrid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   .gameGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1024px) {
-  .gameGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* === Cards === */
+/* === Cards com efeito 3D e melhores proporções === */
 .gameCard {
-  background: rgba(232, 232, 227, 0.95);
-  border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(148, 135, 135, 0.08);
-  border: 1px solid rgba(229, 231, 235, 0.8);
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+    0 0 1px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .gameCard:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(37, 99, 235, 0.3);
+  transform: translateY(-8px) rotateX(4deg) scale(1.02);
+  box-shadow: 16px 40px rgba(0, 0, 0, 0.2),
+    0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .cardHeader {
-  height: 12rem;
+  height: 10rem; /* Altura do cabeçalho aumentada */
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   position: relative;
   overflow: hidden;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .cardHeader::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(255,255,255,0.3), transparent 70%);
-  opacity: 0.6;
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.4), transparent 70%);
+  opacity: 0.8;
 }
 
 .emoji {
-  font-size: 3.5rem;
+  font-size: 2.5rem; /* Tamanho do emoji reajustado */
   z-index: 1;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
 }
 
-/* Gradientes dos cards com glow */
-.sequenciaGradient { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
-.labirintoGradient { background: linear-gradient(135deg, #4ade80, #22c55e); }
-.puzzleGradient   { background: linear-gradient(135deg, #c084fc, #a855f7); }
-.debugGradient    { background: linear-gradient(135deg, #f87171, #ef4444); }
-.loopsGradient    { background: linear-gradient(135deg, #fbbf24, #f97316); }
-.condicoesGradient{ background: linear-gradient(135deg, #818cf8, #6366f1); }
+/* Gradientes e resto dos estilos permanecem iguais */
+.sequenciaGradient {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.labirintoGradient {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+
+.puzzleGradient {
+  background: linear-gradient(135deg, #c084fc, #a855f7);
+}
+
+.debugGradient {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+}
+
+.loopsGradient {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+}
+
+.condicoesGradient {
+  background: linear-gradient(135deg, #818cf8, #6366f1);
+}
 
 .cardContent {
-  padding: 1.5rem;
+  padding: 1.25rem; /* Padding do conteúdo reajustado */
 }
 
 .cardTitle {
-  font-size: 1.25rem;
+  font-size: 1.125rem; /* Fonte do título reajustada */
   font-weight: 700;
   color: var(--color-gray-800);
   margin-bottom: 0.5rem;
 }
 
 .cardDescription {
+  font-size: 0.875rem; /* Fonte da descrição reajustada */
   color: #4b5563;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   line-height: 1.5;
 }
 
@@ -127,20 +159,37 @@
 
 /* Níveis com cores mais tech */
 .level {
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* Fonte do nível reajustada */
   font-weight: 600;
   letter-spacing: 0.3px;
 }
 
-.blueLevel { color: #2563eb; }
-.greenLevel { color: #16a34a; }
-.purpleLevel { color: #9333ea; }
-.redLevel { color: #dc2626; }
-.orangeLevel { color: #ea580c; }
-.indigoLevel { color: #4f46e5; }
+.blueLevel {
+  color: #2563eb;
+}
+
+.greenLevel {
+  color: #16a34a;
+}
+
+.purpleLevel {
+  color: #9333ea;
+}
+
+.redLevel {
+  color: #dc2626;
+}
+
+.orangeLevel {
+  color: #ea580c;
+}
+
+.indigoLevel {
+  color: #4f46e5;
+}
 
 .rating {
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* Fonte da avaliação reajustada */
   color: #6b7280;
   display: flex;
   align-items: center;
