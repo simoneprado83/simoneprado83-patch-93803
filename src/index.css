@@ -57,7 +57,7 @@
 /* ===== Base ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--color-gray-50);
+  background-color: var(--color-gray-50) !important;
   min-height: 100vh;
   line-height: 1.6;
   color: var(--color-gray-800);
@@ -114,7 +114,7 @@ body {
 /* ===== Games Section ===== */
 .gamesSection {
   padding: 4rem 1rem;
-  background: var(--color-white);
+  background: var(--color-white)!important;
   box-shadow: var(--shadow-soft);
   opacity: 0;
   transform: translateY(20px);

@@ -17,7 +17,8 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GamesPage from './pages/GamesPage';
 import BugDetective from './components/BugDetective/BugDetective';
-import LoopPage from './components/Loops/LoopPage';
+import TrafficLightGame from './components/Condicoes/TrafficLightGame';
+import LoopMaze from './components/Loops/LoopMaze';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -67,7 +68,8 @@ function App() {
             <Route path="/labirinto" element={<LabirintoPage />} />
             <Route path="/puzzle" element={<PuzzlePage />} />
             <Route path="/debug" element={<BugDetective />} />
-            <Route path="/loop" element={<LoopPage />} />
+            <Route path="/loops" element={<LoopMaze />} />
+            <Route path="/condicoes" element={<TrafficLightGame />} />
             
             {/* Novas rotas para as páginas de navegação do cabeçalho */}
             <Route path="/sobre" element={<AboutPage />} />

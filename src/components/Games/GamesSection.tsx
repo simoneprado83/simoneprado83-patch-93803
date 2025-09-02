@@ -90,17 +90,32 @@ const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
           </div>
           {/* Card de Labirinto de Laços */}
           <div className={styles.gameCard}>
-            <div className={`${styles.cardHeader} ${styles.loopGradient}`}>
-              <span className={styles.emoji}>🧩</span>
+            <div className={`${styles.cardHeader} ${styles.loopsGradient}`}>
+              <span className={styles.emoji}>🔄</span>
             </div>
             <div className={styles.cardContent}>
               <h4 className={styles.cardTitle}>Labirinto de Laços</h4>
               <p className={styles.cardDescription}>Domine a arte de loops e iterações para resolver desafios complexos</p>
               <div className={styles.cardFooter}>
-                <span className={`${styles.level} ${styles.purpleLevel}`}>Intermediário</span>
+                <span className={`${styles.level} ${styles.orangeLevelLevel}`}>Intermediário</span>
                 <span className={styles.rating}>⭐ 4.7</span>
               </div>
-              <button className="button mt-4 w-full" onClick={() => handlePlayGame('loop', '/loop')}>Jogar</button>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('loops', '/loops')}>Jogar</button>
+            </div>
+          </div>
+          {/* Card de Semáforo */}
+          <div className={styles.gameCard}>
+            <div className={`${styles.cardHeader} ${styles.condicoesGradient}`}>
+              <span className={styles.emoji}>🚦</span>
+            </div>
+            <div className={styles.cardContent}>
+              <h4 className={styles.cardTitle}>Sinais e Condições</h4>
+              <p className={styles.cardDescription}>Aprenda a usar declarações condicionais para controlar o fluxo de programas.</p>
+              <div className={styles.cardFooter}>
+                <span className={`${styles.level} ${styles.indigoLevel}`}>Intermediário</span>
+                <span className={styles.rating}>⭐ 4.7</span>
+              </div>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('condicoes', '/condicoes')}>Jogar</button>
             </div>
           </div>
         </div>

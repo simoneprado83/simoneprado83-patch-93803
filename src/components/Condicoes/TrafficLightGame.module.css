@@ -1,0 +1,250 @@
+/* TrafficLightGame.module.css */
+
+.game-container {
+  max-width: 800px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: white;
+  margin: 20px auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.game-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.traffic-light {
+  background: #333;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.light {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #555;
+  transition: all 0.3s ease;
+}
+
+.light.red {
+  background: #ff4444;
+  box-shadow: 0 0 20px #ff4444;
+}
+.light.yellow {
+  background: #ffdd44;
+  box-shadow: 0 0 20px #ffdd44;
+}
+.light.green {
+  background: #44ff44;
+  box-shadow: 0 0 20px #44ff44;
+}
+.light.off {
+  background: #222;
+  box-shadow: none;
+}
+
+.scenario {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.scenario h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.condition {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #4caf50;
+}
+
+.condition-text {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 100px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-red {
+  background: #ff4444;
+  color: white;
+}
+
+.btn-yellow {
+  background: #ffdd44;
+  color: #333;
+}
+
+.btn-green {
+  background: #44ff44;
+  color: #333;
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.score {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.feedback {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback.correct {
+  background: rgba(76, 175, 80, 0.3);
+  border: 2px solid #4caf50;
+}
+
+.feedback.incorrect {
+  background: rgba(244, 67, 54, 0.3);
+  border: 2px solid #f44336;
+}
+
+.next-btn {
+  background: #4caf50;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.code-explanation {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  border-left: 4px solid #2196f3;
+}
+
+.code-explanation pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.final-results {
+  text-align: center;
+  padding: 40px;
+}
+
+.final-results-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.final-results-message {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.final-results-stats {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .game-area {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .score-board {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

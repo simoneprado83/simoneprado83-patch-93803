@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
-import LoopPage from "../Loops/LoopMaze";
+import TrafficLightGame from "../Condicoes/TrafficLightGame";
+
 
 
 export default function LoopLab() {
@@ -14,7 +15,7 @@ export default function LoopLab() {
       >
         Voltar à Página Inicial
       </button>
-      <LoopPage />
+      <TrafficLightGame />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .heroSection {
   background: linear-gradient(135deg, var(--color-blue-primary), var(--color-blue-secondary));
   background-size: 200% 200%;
-  animation: gradientShift 8s ease infinite;
+  animation: colorShift 3s ease infinite; 
   color: var(--color-white);
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -9,11 +9,17 @@
   overflow: hidden;
 }
 
-/* Efeito de gradiente animado no fundo */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* New keyframe for the background color shift */
+@keyframes colorShift {
+  0% {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  }
+  50% {
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  }
+  100% {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  }
 }
 
 .container {
@@ -59,7 +65,7 @@
   }
 }
 
-/* Botão estilo glass moderno */
+/* Modern glass-style button */
 .button {
   background: rgba(255, 255, 255, 0.9);
   color: var(--color-blue-primary);
