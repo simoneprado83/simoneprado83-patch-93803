@@ -7,6 +7,7 @@ import { challenges } from './data';
 import { Challenge } from './types';
 import styles from './App.module.css';
 
+
 const LoopPage: React.FC = () => {
   const [currentChallenge, setCurrentChallenge] = useState<Challenge | null>(null);
   const [completedChallenges, setCompletedChallenges] = useState<Set<number>>(new Set());

@@ -43,9 +43,13 @@ const ChallengeArea: React.FC<ChallengeAreaProps> = ({ challenge, onComplete, on
         setOutput(`Não está correto ainda. Tente novamente!\n\nSua saída:\n${result}\n\nEsperado:\n${challenge.expected.trim()}`);
         setOutputClass(`${styles.output} ${styles.error}`);
       }
-    } catch (error: any) { // Erro aqui
-    setOutput(`Erro no código: ${error.message}`);
-    setOutputClass(`${styles.output} ${styles.error}`);
+    } catch (error: unknown) { // CORREÇÃO: Usamos 'unknown' aqui
+      if (error instanceof Error) { // CORREÇÃO: Verificamos se é um objeto Error
+        setOutput(`Erro no código: ${error.message}`);
+      } else {
+        setOutput(`Ocorreu um erro desconhecido.`);
+      }
+      setOutputClass(`${styles.output} ${styles.error}`);
     }
   };
 

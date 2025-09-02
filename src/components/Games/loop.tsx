@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LoopPage from "../Loops/LoopPage";
 
 
-export default function Detective() {
+export default function LoopLab() {
   const navigate = useNavigate();
 
   return (
