@@ -16,6 +16,8 @@ import PuzzlePage from './components/Puzzle/Puzzle';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GamesPage from './pages/GamesPage';
+import BugDetective from './components/BugDetective/BugDetective';
+import LoopPage from './components/Loops/LoopPage';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -64,6 +66,8 @@ function App() {
             <Route path="/sequencia" element={<SequenciaPage />} />
             <Route path="/labirinto" element={<LabirintoPage />} />
             <Route path="/puzzle" element={<PuzzlePage />} />
+            <Route path="/debug" element={<BugDetective />} />
+            <Route path="/loop" element={<LoopPage />} />
             
             {/* Novas rotas para as páginas de navegação do cabeçalho */}
             <Route path="/sobre" element={<AboutPage />} />

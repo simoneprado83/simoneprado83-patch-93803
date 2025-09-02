@@ -72,6 +72,37 @@ const GamesSection: React.FC<GamesSectionProps> = ({ playGame }) => {
               <button className="button mt-4 w-full" onClick={() => handlePlayGame('puzzle', '/puzzle')}>Jogar</button>
             </div>
           </div>
+    
+      {/* Card de Detetive de Bugs */}
+          <div className={styles.gameCard}>
+            <div className={`${styles.cardHeader} ${styles.debugGradient}`}>
+              <span className={styles.emoji}>🧩</span>
+            </div>
+            <div className={styles.cardContent}>
+              <h4 className={styles.cardTitle}>Detetive de Bugs</h4>
+              <p className={styles.cardDescription}>Encontre e corrija erros em códigos para desenvolver sua lógica.</p>
+              <div className={styles.cardFooter}>
+                <span className={`${styles.level} ${styles.purpleLevel}`}>Intermediário</span>
+                <span className={styles.rating}>⭐ 4.7</span>
+              </div>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('debug', '/debug')}>Jogar</button>
+            </div>
+          </div>
+          {/* Card de Labirinto de Laços */}
+          <div className={styles.gameCard}>
+            <div className={`${styles.cardHeader} ${styles.loopGradient}`}>
+              <span className={styles.emoji}>🧩</span>
+            </div>
+            <div className={styles.cardContent}>
+              <h4 className={styles.cardTitle}>Labirinto de Laços</h4>
+              <p className={styles.cardDescription}>Domine a arte de loops e iterações para resolver desafios complexos</p>
+              <div className={styles.cardFooter}>
+                <span className={`${styles.level} ${styles.purpleLevel}`}>Intermediário</span>
+                <span className={styles.rating}>⭐ 4.7</span>
+              </div>
+              <button className="button mt-4 w-full" onClick={() => handlePlayGame('loop', '/loop')}>Jogar</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

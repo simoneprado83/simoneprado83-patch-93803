@@ -1,0 +1,16 @@
+/* src/components/ProgressBar.module.css */
+
+.progressBar {
+  background: #e9ecef;
+  border-radius: 10px;
+  height: 20px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progressFill {
+  background: linear-gradient(45deg, #ffb300, #ffd700);
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
