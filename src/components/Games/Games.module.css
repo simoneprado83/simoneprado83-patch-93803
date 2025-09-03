@@ -1,22 +1,21 @@
 .gamesSection {
   padding-top: 4rem;
   padding-bottom: 4rem;
-  background: linear-gradient(180deg, #f9fafb, #ffffff);
+  background: linear-gradient(180deg, #f9fafb, #b7ba8c);
 }
 
-/* Novo container para controlar as margens laterais e centralizar o conteúdo */
 .container {
-  max-width: 96rem; /* Largura máxima para a seção */
+  max-width: 96rem;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem; /* Margem lateral no mobile */
-  padding-right: 1.5rem; /* Margem lateral no mobile */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .container {
-    padding-left: 3rem; /* Margem lateral maior no desktop */
-    padding-right: 3rem; /* Margem lateral maior no desktop */
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
@@ -52,7 +51,7 @@
 .gameGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.5rem;
+  gap: 3.5rem;
 }
 
 @media (max-width: 767px) {
@@ -61,21 +60,46 @@
   }
 }
 
-/* === Cards com efeito 3D e melhores proporções === */
+/* === Animação de entrada (Fade-in) === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .gameCard {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 0.75rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
     0 0 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 12px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
   cursor: pointer;
   transform-style: preserve-3d;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     box-shadow 0.4s ease;
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(5px);
+  margin: auto;
+  gap: 20px;
+
+  /* Aplicação da animação */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
 }
+
+/* Atraso para cada card */
+.gameCard:nth-child(1) { animation-delay: 0.1s; }
+.gameCard:nth-child(2) { animation-delay: 0.2s; }
+.gameCard:nth-child(3) { animation-delay: 0.3s; }
+.gameCard:nth-child(4) { animation-delay: 0.4s; }
+.gameCard:nth-child(5) { animation-delay: 0.5s; }
+.gameCard:nth-child(6) { animation-delay: 0.6s; }
 
 .gameCard:hover {
   transform: translateY(-8px) rotateX(4deg) scale(1.02);
@@ -84,7 +108,7 @@
 }
 
 .cardHeader {
-  height: 10rem; /* Altura do cabeçalho aumentada */
+  height: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,12 +127,11 @@
 }
 
 .emoji {
-  font-size: 2.5rem; /* Tamanho do emoji reajustado */
+  font-size: 3.5rem;
   z-index: 1;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
 }
 
-/* Gradientes e resto dos estilos permanecem iguais */
 .sequenciaGradient {
   background: linear-gradient(135deg, #60a5fa, #3b82f6);
 }
@@ -134,18 +157,18 @@
 }
 
 .cardContent {
-  padding: 1.25rem; /* Padding do conteúdo reajustado */
+  padding: 1.25rem;
 }
 
 .cardTitle {
-  font-size: 1.125rem; /* Fonte do título reajustada */
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-gray-800);
   margin-bottom: 0.5rem;
 }
 
 .cardDescription {
-  font-size: 0.875rem; /* Fonte da descrição reajustada */
+  font-size: 0.875rem;
   color: #4b5563;
   margin-bottom: 1rem;
   line-height: 1.5;
@@ -157,11 +180,11 @@
   justify-content: space-between;
 }
 
-/* Níveis com cores mais tech */
 .level {
-  font-size: 0.875rem; /* Fonte do nível reajustada */
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.3px;
+  margin-bottom: 20px;
 }
 
 .blueLevel {
@@ -189,7 +212,7 @@
 }
 
 .rating {
-  font-size: 0.875rem; /* Fonte da avaliação reajustada */
+  font-size: 0.875rem;
   color: #6b7280;
   display: flex;
   align-items: center;

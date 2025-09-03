@@ -114,7 +114,7 @@ body {
 /* ===== Games Section ===== */
 .gamesSection {
   padding: 4rem 1rem;
-  background: var(--color-white)!important;
+  background: var(--color-white);
   box-shadow: var(--shadow-soft);
   opacity: 0;
   transform: translateY(20px);
@@ -174,15 +174,15 @@ body {
 
 /* ===== Botões Globais ===== */
 .button {
-  background: var(--color-white);
-  color: var(--color-blue-primary);
+  background: var(--color-blue-primary);
+  color: var(--color-white);
   padding: 1rem 2rem;
   border-radius: var(--radius-lg);
   font-weight: 600;
   font-size: 1.125rem;
   transition: all var(--transition-fast);
 }
-.button:hover { background: var(--gradient-blue); color: var(--color-white); box-shadow: var(--shadow-glow); }
+.button:hover { background: var(--color-blue-secondary); color: var(--color-white); box-shadow: var(--shadow-glow); }
 
 /* ===== Texto Animado ===== */
 .title, .subtitle, .cardTitle, .featureTitle {
