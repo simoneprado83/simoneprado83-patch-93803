@@ -73,7 +73,7 @@
 }
 
 .gameCard {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgb(231, 233, 227);
   border-radius: 0.75rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
     0 0 1px rgba(0, 0, 0, 0.05);

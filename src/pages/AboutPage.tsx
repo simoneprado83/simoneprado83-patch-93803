@@ -1,19 +1,20 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+
+
 
 const AboutPage: React.FC = () => {
-  const navigate = useNavigate();
+  
 
   return (
     <div style={styles.container}>
       <div style={styles.contentBox}>
-        <h1 style={styles.title}>Sobre o CodePlay</h1>
+        <h1 style={styles.title}>Sobre Prado Web Play</h1>
         <p style={styles.subtitle}>
           Transformando o aprendizado de programação em uma aventura divertida.
         </p>
         <div style={styles.separator}></div>
         <p style={styles.paragraph}>
-          O **CodePlay** nasceu da paixão por combinar educação com diversão. Acreditamos que
+          Prado Web Play nasceu da paixão por combinar educação com diversão. Acreditamos que
           os conceitos de lógica e algoritmos, essenciais na programação, podem ser
           aprendidos de forma intuitiva e envolvente, através de jogos interativos.
         </p>
@@ -23,10 +24,9 @@ const AboutPage: React.FC = () => {
           Junte-se a nós para resolver puzzles, navegar por labirintos e decifrar padrões
           que fortalecerão seu raciocínio lógico.
         </p>
-        <button style={styles.button} onClick={() => navigate('/')}>
-          Voltar à Página Inicial
-        </button>
+        
       </div>
+      
     </div>
   );
 };
@@ -50,7 +50,7 @@ const styles = {
     borderRadius: '20px',
     padding: '40px',
     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-    textAlign: 'center' as 'center',
+    
   },
   title: {
     fontSize: '2.5rem',
@@ -73,7 +73,7 @@ const styles = {
     fontSize: '1.1rem',
     lineHeight: 1.6,
     marginBottom: '20px',
-    textAlign: 'left' as 'left',
+    
   },
   button: {
     background: 'linear-gradient(45deg, #fbbf24, #f59e0b)',

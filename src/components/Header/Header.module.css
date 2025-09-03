@@ -155,3 +155,11 @@
   background-color: rgba(37, 99, 235, 0.08);
   transform: translateX(6px);
 }
+/* Garante que o menu e o botão fiquem visíveis apenas no mobile */
+@media (min-width: 768px) {
+  .mobileMenu,
+  .mobileMenuButton,
+  .hidden-checkbox {
+    display: none;
+  }
+}

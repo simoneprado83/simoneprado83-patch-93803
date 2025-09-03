@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ isMobileMenuOpen, toggleMobileMenu }) =
             <div className={styles.logoIcon}>
               <span className={styles.iconText}>🎮</span>
             </div>
-            <h1 className={styles.logoText}>CodePlay</h1>
+            <h1 className={styles.logoText}>Prado Web Play</h1>
           </div>
           <nav className={styles.desktopNav}>
             <NavLink
