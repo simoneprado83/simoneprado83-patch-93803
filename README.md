@@ -1,4 +1,4 @@
-# 🎮 CodePlay - Aprenda Programação Jogando
+# 🎮 Prado Web Play - Aprenda Programação Jogando
 
 CodePlay é uma plataforma web interativa desenvolvida com React e TypeScript, que transforma o aprendizado de programação em uma experiência divertida e gamificada. Perfeito para iniciantes, estudantes e qualquer pessoa que queira desenvolver sua lógica de programação de forma prática e envolvente.
 Siga o site:  https://pradowebplay.online/
